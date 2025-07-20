@@ -11,21 +11,23 @@
 var spider = [  
     [0,0,0,0,0,0,0,],
     [0,1,0,0,0,1,0,],
-    [1,0,1,0,1,0,1,],
-    [1,0,1,1,1,0,1,],
-    [1,0,1,1,1,0,1,],
+    [1,1,1,0,1,1,1,],
+    [1,1,1,1,1,1,1,],
+    [1,1,1,1,1,1,1,],
     [0,1,1,1,1,1,0,],
     [0,0,1,1,1,0,0,],
     [0,0,0,1,0,0,0,] 
 ];
-
 var dotSize = 8;
+function setup(){
+createCanvas(800,800);
+background("red");
 fill("IndianRed");
-
-function loop()
+}
+function draw()
 {
-    clear();
-    
+   // clear();
+    background("red")
     putSprite(spider, mouseX, mouseY, dotSize);
 }
 
