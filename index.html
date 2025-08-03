@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Booming</title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.9/lib/p5.min.js"></script>
+  <script defer src = "https://unpk"
 </head>
 <body>
     <script>
 var yValue = 0;
 var xValue;
+var x = 448;
 var heart = [  
     [0,0,0,0,0,0,0,],
     [0,1,0,0,0,1,0,],
@@ -38,20 +40,28 @@ background("red");
 fill("IndianRed");
 xValue = random(0,960);
 }
-function draw()
-{
+function draw(){
+
     background("red")
-    putSprite(heart, mouseX, mouseY, dotSize);
+    putSprite(heart, x, 892, dotSize);
     putSprite(butterfly,xValue,yValue,dotSize)
     if (yValue < 960){
          yValue++
-    }else{ yValue= 0
+    }else{ 
+        yValue= 0
         xValue = random(0,960)
 
     }
     
-}
+   if (keyIsDown(LEFT_ARROW) ) {
+    x -= 5;
+  }
 
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += 5;
+  }
+
+}
 
 function putSprite(sprite, spriteX, spriteY, dotSize)
 {
