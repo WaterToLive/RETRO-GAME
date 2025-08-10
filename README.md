@@ -1,4 +1,7 @@
 # RETRO-GAME
+#Homework 08/10/2025
+add as much of the scoreboard as possible and make sur emy code works properly
+
 #Homework 08/03/2025
 
 -make sure collide works by alerting!

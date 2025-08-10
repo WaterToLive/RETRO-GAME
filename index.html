@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Booming</title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.9/lib/p5.min.js"></script>
-  <script defer src = "https://unpk"
+  <script defer src = "https://unpk"></script>
 </head>
 <body>
-    <script>
+ <script>
+var hit = false;
+const poly = [];
 var yValue = 0;
 var xValue;
 var x = 448;
@@ -39,6 +41,9 @@ createCanvas(960,960);
 background("red");
 fill("IndianRed");
 xValue = random(0,960);
+poly[0] = createVector(x,892)
+poly[1] = createVector(x+56,892);
+poly[2] = createVector(x+32,956)
 }
 function draw(){
 
@@ -60,7 +65,9 @@ function draw(){
   if (keyIsDown(RIGHT_ARROW)) {
     x += 5;
   }
+hit = collideCirclePoly(xValue+32,yValue+32,64,poly);
 
+print('colliding?', hit);
 }
 
 function putSprite(sprite, spriteX, spriteY, dotSize)
