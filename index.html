@@ -44,9 +44,12 @@ createCanvas(960,960);
 background("purple");
 fill("IndianRed");
 xValue = random(0,960);
+if(localStorage.getItem('HIGHSCORE') == null){
+localStorage.setItem("HIGHSCORE",0)
+}
 }
 function draw(){
-    
+    console.log(localStorage.getItem('HIGHSCORE'))
     background("purple")
     putSprite(heart, x, 892, dotSize);
     putSprite(butterfly,xValue,yValue,dotSize)
@@ -72,6 +75,7 @@ poly[2] = createVector(x+32,956);
   print('colliding?', hit);
 text("Score:" + score,10,30);
 textSize(30);
+text("Highscore:" + localStorage.getItem('HIGHSCORE'),770,30);
 fill("yellow");
   if (hit == true){
      score+= 1;
