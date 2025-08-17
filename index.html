@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Booming</title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.9/lib/p5.min.js"></script>
-  <script defer src = "https://unpk"></script>
+    <script defer src = "https://unpkg.com/p5"></script>
+
+    <script defer src = "https://unpkg.com/p5.collide2d"></script>
 </head>
 <body>
  <script>
+var score = 0;
 var hit = false;
 const poly = [];
 var yValue = 0;
@@ -38,20 +41,17 @@ var butterfly = [
 var dotSize = 8;
 function setup(){
 createCanvas(960,960);
-background("red");
+background("purple");
 fill("IndianRed");
 xValue = random(0,960);
-poly[0] = createVector(x,892)
-poly[1] = createVector(x+56,892);
-poly[2] = createVector(x+32,956)
 }
 function draw(){
-
-    background("red")
+    
+    background("purple")
     putSprite(heart, x, 892, dotSize);
     putSprite(butterfly,xValue,yValue,dotSize)
     if (yValue < 960){
-         yValue++
+         yValue+= 10;
     }else{ 
         yValue= 0
         xValue = random(0,960)
@@ -59,15 +59,25 @@ function draw(){
     }
     
    if (keyIsDown(LEFT_ARROW) ) {
-    x -= 5;
+    x -= 10;
   }
 
   if (keyIsDown(RIGHT_ARROW)) {
-    x += 5;
+    x += 10;
   }
-hit = collideCirclePoly(xValue+32,yValue+32,64,poly);
-
-print('colliding?', hit);
+poly[0] = createVector(x,892);
+poly[1] = createVector(x+56,892);
+poly[2] = createVector(x+32,956);
+  hit = collideCirclePoly(xValue+32,yValue+32,64,poly);
+  print('colliding?', hit);
+text("Score:" + score,10,30);
+textSize(30);
+fill("yellow");
+  if (hit == true){
+     score+= 1;
+     yValue = 0;
+     xValue = random(0,960);
+}
 }
 
 function putSprite(sprite, spriteX, spriteY, dotSize)
